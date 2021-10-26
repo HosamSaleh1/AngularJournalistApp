@@ -12,7 +12,7 @@ export class SignupComponent implements OnInit {
 
   invalidEmail:boolean = false
   invalidAge:boolean = false
-  journalist:Journalist = {}
+  journalist:any
   token:any
 
   constructor(private authService:AuthService, private router:Router) { }
@@ -25,6 +25,12 @@ export class SignupComponent implements OnInit {
       this.router.navigate(['/profile'])
     },(err)=>{
       console.log(err)
+      if(err.error.code === 11000){
+        this.invalidEmail = true
+      }
+      if(err.error.errors.phone.name === 'validatorError'){
+        this.invalidAge = true
+      }
     })
   }
 

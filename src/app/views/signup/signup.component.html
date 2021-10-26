@@ -24,23 +24,6 @@
     </div>
   </div>
   <div class="form-group">
-    <label for="age">Age</label>
-    <input
-      type="number"
-      class="form-control mt-2"
-      id="age"
-      placeholder="Enter Your Age"
-      name="age"
-      ngModel
-      #age="ngModel"
-      required
-    />
-    <div class="errors text-center" *ngIf="age.touched && age.invalid">
-      <div *ngIf="age.errors?.required">* Age Is Required *</div>
-    </div>
-    <div *ngIf="invalidAge">* Age must be a positive number *</div>
-  </div>
-  <div class="form-group">
     <label for="email">Email</label>
     <input
       type="email"
@@ -57,7 +40,25 @@
       <div *ngIf="email.errors?.required">* Email Is Required *</div>
       <div *ngIf="email.errors?.email">* Wrong Email *</div>
     </div>
-    <div *ngIf="invalidAge">* Email is already in use *</div>
+    <div *ngIf="invalidEmail">* Email is already in use *</div>
+  </div>
+  <div class="form-group">
+    <label for="phone">Phone Num</label>
+    <input
+      type="number"
+      class="form-control mt-2"
+      id="phone"
+      placeholder="Enter Your Phone Number"
+      name="phone"
+      ngModel
+      #phone="ngModel"
+      required
+      minlength="11"
+    />
+    <div class="errors text-center" *ngIf="phone.touched && phone.invalid">
+      <div *ngIf="phone.errors?.required">* phone Is Required *</div>
+    </div>
+    <div *ngIf="invalidPhone">* Phone must be a positive number *</div>
   </div>
   <div class="form-group">
     <label for="password">Password</label>
@@ -81,6 +82,7 @@
         * Password minlength is {{ password.errors?.minlength.requiredLength }} *
       </div>
     </div>
+    <br>
     <button type="submit" class="btn btn-primary" [disabled]='myForm.invalid'>Submit</button>
   </div>
 </form>

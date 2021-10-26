@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NewsService } from 'src/app/services/news.service';
+import { News } from 'src/interfaces/newsModel';
 
 @Component({
   selector: 'app-add-news',
@@ -7,7 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddNewsComponent implements OnInit {
 
-  constructor() { }
+  news:News = {}
+
+  constructor(private newsService:NewsService, private router:Router) { }
+
+  addNews(news:any){
+    this.newsService.addNewsService(news).subscribe((res)=>{
+      this.news = res
+      this.router.navigate(['/showNews'])
+    })
+  }
+
+
+
 
   ngOnInit(): void {
   }

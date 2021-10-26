@@ -1,1 +1,57 @@
-<p>add-news works!</p>
+<form
+  #myForm="ngForm"
+  (ngSubmit)="addNews(myForm.value); myForm.reset()"
+  class="container"
+>
+<div class="form-group">
+    <label for="description">News Title</label>
+    <input
+      type="text"
+      class="form-control mt-2"
+      id="title"
+      placeholder="Enter Task Title"
+      name="title"
+      ngModel
+      #title="ngModel"
+      required
+      minlength="5"
+    />
+    <div class="errors text-center" *ngIf="title.touched && title.invalid">
+      <div *ngIf="title.errors?.required">* News title Is Required *</div>
+      <div *ngIf="title.errors?.minlength">
+        * News title minlength is {{ title.errors?.minlength.requiredLength }} *
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="description">News Description</label>
+    <input
+      type="text"
+      class="form-control mt-2"
+      id="description"
+      placeholder="Enter Task Description"
+      name="description"
+      ngModel
+      #description="ngModel"
+      required
+      minlength="10"
+    />
+    <div class="errors text-center" *ngIf="description.touched && description.invalid">
+      <div *ngIf="description.errors?.required">* News description Is Required *</div>
+      <div *ngIf="description.errors?.minlength">
+        * News description minlength is {{ description.errors?.minlength.requiredLength }} *
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="date">News Date</label>
+    <input
+      type="date"
+      class="form-control"
+      id="date"
+      name="date"
+      ngModel
+      #date='ngModel'
+    />
+  </div>
+</form>
