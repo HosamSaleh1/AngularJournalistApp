@@ -35,11 +35,8 @@ export class ProfileComponent implements OnInit {
     window.location.reload()
   }
 
-  addNews(){
-    this.router.navigate(['/addNews'])
-  }
-
   ngOnInit(): void {
+    this.getProfile()
   }
 
 }

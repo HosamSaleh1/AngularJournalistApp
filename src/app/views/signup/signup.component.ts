@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { Journalist } from 'src/interfaces/journalistModel';
 
 @Component({
   selector: 'app-signup',
@@ -11,14 +10,14 @@ import { Journalist } from 'src/interfaces/journalistModel';
 export class SignupComponent implements OnInit {
 
   invalidEmail:boolean = false
-  invalidAge:boolean = false
+  invalidPhone:boolean = false
   journalist:any
   token:any
 
   constructor(private authService:AuthService, private router:Router) { }
 
-  signUp(journalist:Journalist){
-    this.authService.signUpService(journalist).subscribe((res)=>{
+  signUp(credentials:any){
+    this.authService.signUpService(credentials).subscribe((res)=>{
       this.journalist = res
       this.token = this.journalist.token
       localStorage.setItem('token',this.token)
@@ -29,12 +28,10 @@ export class SignupComponent implements OnInit {
         this.invalidEmail = true
       }
       if(err.error.errors.phone.name === 'validatorError'){
-        this.invalidAge = true
+        this.invalidPhone = true
       }
     })
   }
-
-
 
 
   ngOnInit(): void {

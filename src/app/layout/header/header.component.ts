@@ -11,12 +11,12 @@ export class HeaderComponent implements OnInit {
   constructor(private authService:AuthService) { }
 
   logOut(){
-    this.authService
+    this.authService.logOutService
     localStorage.removeItem('token')
   }
 
   get isLoggedIn(){
-    let token = localStorage.getItem('token')
+    let token = this.authService.getTokenService()
     if (token){
       return true
     }

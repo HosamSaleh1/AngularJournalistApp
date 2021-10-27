@@ -9,7 +9,7 @@
       type="text"
       class="form-control mt-2"
       id="title"
-      placeholder="Enter Task Title"
+      placeholder="Enter News Title"
       name="title"
       ngModel
       #title="ngModel"
@@ -29,7 +29,7 @@
       type="text"
       class="form-control mt-2"
       id="description"
-      placeholder="Enter Task Description"
+      placeholder="Enter News Description"
       name="description"
       ngModel
       #description="ngModel"
@@ -54,4 +54,6 @@
       #date='ngModel'
     />
   </div>
+  <br>
+  <button type="button" class="btn btn-primary btn-sm" [disabled]='myForm.invalid'>Submit</button>
 </form>

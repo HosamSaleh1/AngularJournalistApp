@@ -1,1 +1,7 @@
-<p>edit-news works!</p>
+<h1>Update News</h1><br>
+<h3>Title: {{news.title}}</h3><br>
+<h3>Description:
+    <input type="text" 
+     [(ngModel)] = 'news.description' />
+</h3><br>
+<h3>Date: {{news.date}}</h3>

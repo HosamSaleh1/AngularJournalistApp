@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  journalis:any
+  journalist:any
   token:any
   invalidLogin:boolean = false
 
@@ -17,8 +17,9 @@ export class LoginComponent implements OnInit {
 
   logIn(credentials:any){
     this.authService.logInService(credentials).subscribe((res)=>{
-      let journalis = res
-      let token = this.journalis.token
+      console.log(res)
+      this.journalist = res
+      let token = this.journalist.token
       localStorage.setItem('token',token)
       this.router.navigate(['/profile'])
     },(err)=>{

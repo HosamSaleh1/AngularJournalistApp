@@ -12,16 +12,16 @@
             <a class="nav-link" routerLink="/signup" *ngIf='!isLoggedIn'>Sign Up</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/profile" *ngIf='isLoggedIn'>Log Out</a>
+            <a class="nav-link" routerLink="/" (click)='logOut()' *ngIf='isLoggedIn'>Log Out</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/profile" *ngIf='isLoggedIn'>Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/profile" *ngIf='isLoggedIn'>Add News</a>
+            <a class="nav-link" routerLink="/addNews" *ngIf='isLoggedIn'>Add News</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/profile" *ngIf='isLoggedIn'>Show News</a>
+            <a class="nav-link" routerLink="/showNews" *ngIf='isLoggedIn'>Show News</a>
           </li>
         </ul>
       </div>

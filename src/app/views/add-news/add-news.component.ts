@@ -14,15 +14,12 @@ export class AddNewsComponent implements OnInit {
 
   constructor(private newsService:NewsService, private router:Router) { }
 
-  addNews(news:any){
+  addNews(news:News){
     this.newsService.addNewsService(news).subscribe((res)=>{
       this.news = res
       this.router.navigate(['/showNews'])
     })
   }
-
-
-
 
   ngOnInit(): void {
   }

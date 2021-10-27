@@ -12,15 +12,22 @@ export class NewsService {
   constructor(private http:HttpClient) { }
 
   showNewsService(){
-    return this.http.get<News>(this.url + 'allNews')
+    return this.http.get<News[]>(this.url + 'allNews')
   }
 
   addNewsService(news:News){
     return this.http.post(this.url + 'addNews', news)
   }
 
-  editNewsService(news:News){
-    return this.http.patch(this.url + 'updateNews', news)
+  editNewsService(id:any,news:News){
+    return this.http.patch(this.url + 'updateNews/' + id, news)
   }
 
+  getSingleNewsService(id:any){
+    return this.http.get<News>(this.url + 'allNews/' + id)
+  }
+
+  deleteNewsService(id:any){
+    return this.http.delete(this.url + 'deleteNews/' + id)
+  }
 }

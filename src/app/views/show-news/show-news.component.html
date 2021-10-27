@@ -9,11 +9,19 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor='let news of news; let i = Index'>
+      <tr *ngFor='let news of news; let i = index'>
         <th scope="row">{{i}}</th>
         <td>{{news.title}}</td>
         <td>{{news.description}}</td>
         <td>{{news.date}}</td>
+        <td>
+          <a routerLink='/editNews/{{news._id}}'>
+            <button type="button" class="btn btn-primary btn-sm">Update</button>
+          </a>
+        </td>
+        <td>
+          <button type="button" class="btn btn-primary btn-sm" (click)='deleteNews(news)'>Delete</button>
+        </td>
       </tr>
     </tbody>
   </table>

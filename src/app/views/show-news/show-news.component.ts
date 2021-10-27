@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { News } from 'src/interfaces/newsModel';
 import { NewsService } from 'src/app/services/news.service';
 
@@ -10,9 +10,9 @@ import { NewsService } from 'src/app/services/news.service';
 })
 export class ShowNewsComponent implements OnInit {
 
-  news:any
+  news:News [] = []
 
-  constructor(private newsService:NewsService, private router:Router) { }
+  constructor(private newsService:NewsService, private router:Router, private route:ActivatedRoute) { }
 
   showNews(){
     this.newsService.showNewsService().subscribe((res)=>{
@@ -22,8 +22,11 @@ export class ShowNewsComponent implements OnInit {
     })
   }
 
-  editNews(id:any){
-    this.router.navigate(['/editNews/' + id])
+  deleteNews(news:News){
+    this.newsService.deleteNewsService(news._id).subscribe(()=>{
+      let index = this.news.indexOf(news)
+      this.news.splice(index,1)
+    })
   }
 
   ngOnInit(): void {

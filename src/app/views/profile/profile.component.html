@@ -3,11 +3,11 @@
     <h3>Add Image</h3>
     <br>
     <br>
-    <img src='data:image/png;base64,{{journalist.avatar}}'  width="300px">
+    <img data-src='data:image/png;base64,{{journalist.avatar}}'  width="300px">
     <br>
     <br>
     <input type="file" name="avatar" (change)='handleUpload($event)' multiple accept="image/*"/>
     <br>
     <br>
-    <button type="button" class="btn btn-primary" (click)='uploadFile()' *ngIf='file'>Upload</button>
+    <button type="button" class="btn btn-primary" (click)='uploadFile()' >Upload</button>
     </div>
