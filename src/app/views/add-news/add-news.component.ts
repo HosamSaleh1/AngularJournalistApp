@@ -16,6 +16,7 @@ export class AddNewsComponent implements OnInit {
 
   addNews(news:News){
     this.newsService.addNewsService(news).subscribe((res)=>{
+      console.log(this.news)
       this.news = res
       this.router.navigate(['/showNews'])
     })
